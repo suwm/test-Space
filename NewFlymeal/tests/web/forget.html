@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+            font-family: "微软雅黑";
+        }
+        .m-pannel-forget{
+            width: 780px;;
+            border: 1px solid #EDEDED;
+            margin: 0 auto;
+        }
+        .m-pannel-forget .header{
+            height: 38px;
+            border-bottom: 1px solid #EDEDED;
+            line-height: 38px;
+        }
+        .m-pannel-forget ul{
+            list-style-type: none;
+        }
+        .m-pannel-forget ul li{
+            float: left;
+            width: 180px;
+            background: url("right.png") no-repeat right;
+            text-align: center;
+            color: #959595;
+        }
+        .m-pannel-forget .current{
+            color: #FF8f2f;
+        }
+
+        .m-pannel-forget .content{
+            padding: 36px 0 36px 25px;
+            line-height: 45px;
+        }
+        .username{
+            width: 250px;
+         }
+        .checkcode{
+            width: 150px;
+        }
+
+        /**module*/
+        .label{
+            margin-left: 20px;
+            font-size: 14px;
+        }
+        .input-text{
+            height: 25px;
+            border-radius: 3px;
+            line-height: 25px;
+            border: 1px solid #C5C5C5;
+            padding-left: 5px;
+        }
+        .input-btn{
+            height: 30px;
+            border-radius: 3px;
+            line-height: 25px;
+            background: #FD9100;
+            color: #ffffff;
+            width: 90px;
+            border: 1px solid #fd9100;
+        }
+        .error{
+            color: red;
+            font-size: 14px;
+        }
+        .btn-ctner{
+            padding-left: 78px;
+        }
+
+        .label-newPass{
+            margin-left: 34px;
+        }
+        .pass{
+            width: 250px;
+        }
+        .sendTo-pannel{
+        }
+        .newpass-pannel{
+        }
+        .checkcode-pannel{
+            margin-left: 80px;
+        }
+        .msg-pannel{
+            text-align: center;
+            color: #84E283;
+        }
+        .fn-dn{
+            display: none;
+        }
+        .s60{
+            background: #FD9100;
+            color: white;
+            width: 0px;
+            margin-left: 8px;
+            padding: 0 4px;
+            border-radius: 3px;
+            font-size: 14px;
+        }
+        .num{
+            margin-left: 3px;
+        }
+        .noclear{
+            position: relative;
+            top: -9px;
+            margin-left: 6px;
+        }
+    </style>
+    <title>web-忘记密码</title>
+</head>
+<body>
+<div class="m-pannel-forget">
+    <div class="header">
+        <ul>
+            <li class="current">填写账户名</li>
+            <li>验证身份</li>
+            <li>设置新密码</li>
+            <li>完成</li>
+        </ul>
+    </div>
+    <div class="content">
+        <form action="#" id="form">
+        <div class="username-pannel" id="username-pannel">
+            <label class="label" >用户名：</label>
+            <input type="text" class="username input-text" placeholder="请输入用户名" id="username-input" />
+            <span class="error" id="username-msg"></span>
+        </div>
+        <div class="sendTo-pannel fn-dn" id="sendTo-pannel">
+            <span class="label">短信验证码已发送至：</span><span class="label num">150******330</span><span class="s60" id="s60">60秒后重新发送</span>
+        </div>
+       <div class="checkCtner-pannel" id="checkCtner-pannel">
+           <label class="label">验证码：</label>
+           <input type="text" class="checkcode input-text" id="checkcode-input"/>
+
+           <span class="error" id="checkcode-msg"></span>
+       </div>
+       <div class="checkcode-pannel" id="checkcode-pannel">
+            <img src="checkcode.png"/><a class="noclear" href="#">看不清,换张图片</a>
+       </div>
+       <div class="newpass-pannel fn-dn" id="newpass-pannel">
+           <label class="label label-newPass" >新密码：</label>
+           <input type="password" class="pass input-text" placeholder="6-16字母和数字组合" id="pass-input"/>
+           <span class="error" id="pass-msg"></span>
+           <br>
+           <label class="label" >确认密码：</label>
+           <input type="password" class="pass input-text" id="repass-input"/>
+           <span class="error" id="repass-msg"></span>
+       </div>
+        <div class="msg-pannel fn-dn" id="msg-pannel">设置密码成功
+        </div>
+       <div class="sub-pannel" id="sub-pannel">
+           <div class="btn-ctner">
+               <input type="submit" value="下一步" class="input-btn" id="nextStep"/>
+           </div>
+       </div>
+        </form>
+    </div>
+</div>
+<input type="hidden" id="count"/>
+</body>
+<script src="../src/js/jquery.min.js" type="text/javascript"></script>
+<script type="text/javascript">
+$(function(){
+    var current = 0,
+            $newPass = $("#newpass-pannel"),$checkCode = $("#checkcode-pannel"),$checkctner = $("#checkCtner-pannel"),
+            $username = $("#username-pannel"),$sendTo = $("#sendTo-pannel"),$msg = $("#msg-pannel") ,$count =$("#count");
+
+    $("#form").submit(function(){
+        alert("d");
+        var _arg = {
+            block:{"display":"block"},
+            none:{"display":"none"}
+        },msg = {
+            none:"",
+            checkcode:"验证码错误!",
+            username:"账户不存在",
+            null:"请填写信息!",
+            pass:"密码只能由6-16字母和数字组成",
+            repass:"两次密码不一致"
+        } , pattern = {
+            pass: /[a-zA-Z0-9]{5,15}/ //6-16字母和数字组成
+        };;
+
+        var $current = $(".m-pannel-forget .header li.current");
+
+
+        if($current.index() == 0){
+            var _$username = $("#username-input"),_$checkcode = $("#checkcode-input");
+
+            if(_$username.val()==null||_$username.val()==""){
+                $("#username-msg").html(msg.null);
+                return false;
+            }
+            $("#username-msg").html(msg.none);
+
+            if(_$checkcode.val()==null||_$checkcode.val()==""){
+                $("#checkcode-msg").html(msg.null);
+                return false;
+            }
+            $("#checkcode-msg").html(msg.none);
+
+            //校验验证码
+           /* var _checkcode = '<%=session.getAttribute("checkcode")%>';
+             var checkcodeInput = _$checkcode.val();
+             if(checkcodeInput!==_checkcode){
+             $("#checkcode-msg").html(msg.checkcode);
+             return;
+             }*/
+            $("#checkcode-msg").html(msg.none);
+
+            //校验用户名
+            /*$.ajax({
+                url:"data-forget.html",
+                type:"get",
+                data:{username:$("#username-input").val()},
+                dataType:"JSON",
+                timeout:200,
+                cache:false,
+                done:function(data){
+
+                },
+                success:function(data, textStatus){
+                    if(data.flag){
+                        $username.css(_arg.none);
+                        $sendTo.css(_arg.block);
+                        $checkCode.css(_arg.none);
+
+                        $current.removeClass("current");
+                        $current.next().addClass("current");
+                    }else{
+                        $("#username-msg").html(msg.username);
+                    }
+                },
+                error:function(XMLHttpRequest, textStatus, errorThrow){
+
+                },
+                complete:function(XHR, TS){
+
+
+                }
+            });*/
+            $username.css(_arg.none);
+            $sendTo.css(_arg.block);
+            $checkCode.css(_arg.none);
+
+            $current.removeClass("current");
+            $current.next().addClass("current");
+            _$checkcode.val(msg.none);
+
+        }else if($current.index() === 1){
+//          短信验证码校验
+         /*   var _sec = 60;
+            setInterval( function(){
+
+                if(_sec!=0){
+                    _sec--;
+                    $("s60").html(_sec+"秒后重新发送");
+                }
+            },1000);*/
+
+//
+          /*  $.ajax({
+                url:"data-forget.html",
+                type:"get",
+                data:{username:$("#username-input").val()},
+                dataType:"JSON",
+                timeout:200,
+                cache:false,
+                done:function(data){
+
+                },
+                success:function(data, textStatus){
+                    if(data.flag){
+                        $checkctner.css(_arg.none);
+                        $sendTo.css(_arg.none);
+                        $newPass.css(_arg.block);
+
+                        $current.removeClass("current");
+                        $current.next().addClass("current");
+                    }else{
+                        $("#username-msg").html(msg.username);
+                    }
+                },
+                error:function(XMLHttpRequest, textStatus, errorThrow){
+
+                },
+                complete:function(XHR, TS){
+                }
+            });*/
+            $checkctner.css(_arg.none);
+            $sendTo.css(_arg.none);
+            $newPass.css(_arg.block);
+
+            $current.removeClass("current");
+            $current.next().addClass("current");
+        }else if($current.index() === 2){
+//            var
+
+
+            var $passMsg = $("#pass-msg"),$repassMsg = $("#repass-msg"),$repassIpt = $("#repass-input"),$passIpt = $("#pass-input");
+            if(!pattern.pass.test($passIpt.val())){
+                $passMsg.html(msg.pass);
+                return false;
+            }
+            $passMsg.html(msg.none);
+            if(!pattern.pass.test($repassIpt.val())){
+                $repassMsg.html(msg.pass);
+                return false;
+            }
+            if($passIpt.val()!==$repassIpt.val()){
+                $repassMsg.html(msg.repass);
+                return false;
+            }
+            $newPass.css(_arg.none);
+            $msg.css(_arg.block);
+            $current.removeClass("current");
+            $current.next().addClass("current");
+            //保存新密码
+            /*  $.ajax({
+             url:"data-forget.html",
+             type:"get",
+             data:{username:$("#username-input").val()},
+             dataType:"JSON",
+             timeout:200,
+             cache:false,
+             done:function(data){
+
+             },
+             success:function(data, textStatus){
+             if(data.flag){
+             $checkctner.css(_arg.none);
+             $sendTo.css(_arg.none);
+             $newPass.css(_arg.block);
+
+             $current.removeClass("current");
+             $current.next().addClass("current");
+             }else{
+             $("#username-msg").html(msg.username);
+             }
+             },
+             error:function(XMLHttpRequest, textStatus, errorThrow){
+
+             },
+             complete:function(XHR, TS){
+             }
+             });*/
+            $("#nextStep").val("去登录").closest("div").css({
+                "paddingLeft":0,
+                "textAlign":"center"
+            });
+
+
+        }else{
+            window.location.href = "login.jsp"
+        }
+
+        return false;
+    });
+
+
+});
+</script>
+</html>
