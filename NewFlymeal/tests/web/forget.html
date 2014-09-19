@@ -9,7 +9,7 @@
             font-family: "微软雅黑";
         }
         .m-pannel-forget{
-            width: 780px;;
+            width: 720px;;
             border: 1px solid #EDEDED;
             margin: 0 auto;
         }
@@ -47,11 +47,12 @@
         .label{
             margin-left: 20px;
             font-size: 14px;
+            color: #888;
         }
         .input-text{
-            height: 25px;
+            height: 30px;
             border-radius: 3px;
-            line-height: 25px;
+            line-height: 30px;
             border: 1px solid #C5C5C5;
             padding-left: 5px;
         }
@@ -63,6 +64,7 @@
             color: #ffffff;
             width: 90px;
             border: 1px solid #fd9100;
+            font-size: 16px;
         }
         .error{
             color: red;
@@ -77,10 +79,6 @@
         }
         .pass{
             width: 250px;
-        }
-        .sendTo-pannel{
-        }
-        .newpass-pannel{
         }
         .checkcode-pannel{
             margin-left: 80px;
@@ -99,7 +97,8 @@
             margin-left: 8px;
             padding: 0 4px;
             border-radius: 3px;
-            font-size: 14px;
+            font-size: 12px;
+            padding: 3px 4px;
         }
         .num{
             margin-left: 3px;
@@ -108,6 +107,14 @@
             position: relative;
             top: -9px;
             margin-left: 6px;
+        }
+        .success{
+            position: relative;
+            top: 9px;
+            margin-right: 3px;
+        }
+        .finsh{
+            background: none;
         }
     </style>
     <title>web-忘记密码</title>
@@ -119,7 +126,7 @@
             <li class="current">填写账户名</li>
             <li>验证身份</li>
             <li>设置新密码</li>
-            <li>完成</li>
+            <li class="finsh">完成</li>
         </ul>
     </div>
     <div class="content">
@@ -150,7 +157,7 @@
            <input type="password" class="pass input-text" id="repass-input"/>
            <span class="error" id="repass-msg"></span>
        </div>
-        <div class="msg-pannel fn-dn" id="msg-pannel">设置密码成功
+        <div class="msg-pannel fn-dn" id="msg-pannel"><img src="success.png" class="success"/>设置密码成功
         </div>
        <div class="sub-pannel" id="sub-pannel">
            <div class="btn-ctner">
@@ -170,7 +177,6 @@ $(function(){
             $username = $("#username-pannel"),$sendTo = $("#sendTo-pannel"),$msg = $("#msg-pannel") ,$count =$("#count");
 
     $("#form").submit(function(){
-        alert("d");
         var _arg = {
             block:{"display":"block"},
             none:{"display":"none"}
@@ -178,27 +184,24 @@ $(function(){
             none:"",
             checkcode:"验证码错误!",
             username:"账户不存在",
-            null:"请填写信息!",
-            pass:"密码只能由6-16字母和数字组成",
+            _null:"请填写信息!",
+            pass:"密码必须由6-16字母和数字组成",
             repass:"两次密码不一致"
         } , pattern = {
             pass: /[a-zA-Z0-9]{5,15}/ //6-16字母和数字组成
-        };;
-
+        };
         var $current = $(".m-pannel-forget .header li.current");
-
-
         if($current.index() == 0){
             var _$username = $("#username-input"),_$checkcode = $("#checkcode-input");
 
             if(_$username.val()==null||_$username.val()==""){
-                $("#username-msg").html(msg.null);
+                $("#username-msg").html(msg._null);
                 return false;
             }
             $("#username-msg").html(msg.none);
 
             if(_$checkcode.val()==null||_$checkcode.val()==""){
-                $("#checkcode-msg").html(msg.null);
+                $("#checkcode-msg").html(msg._null);
                 return false;
             }
             $("#checkcode-msg").html(msg.none);
@@ -297,6 +300,9 @@ $(function(){
 
             $current.removeClass("current");
             $current.next().addClass("current");
+            $("#nextStep").closest("div").css({
+                "paddingLeft":"95px"
+            });
         }else if($current.index() === 2){
 //            var
 
@@ -360,8 +366,6 @@ $(function(){
 
         return false;
     });
-
-
 });
 </script>
 </html>
