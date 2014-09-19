@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>数据中心营业额-排名</title>
+    <style>
+        .body{
+            background: #000000;
+
+        }
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .m-rank{
+            width: 400px;
+            border: 1px solid darkslategray;
+            margin: 0 auto;
+            font-family: "微软雅黑";
+            background: #303032;
+            min-width: 240px;;
+        }
+        .m-container{
+            padding: 5px;
+        }
+        .m-rank-hd h4{
+            color: #CCC;
+            margin: 4px 10px;
+            font-weight: normal;
+        }
+        .upDown{
+            display: inline-block;
+            float: right;
+            background-position: -2px 3px;
+            width: 12px;
+        }
+        .up{
+            background: url("src/imgs/up.png") no-repeat;
+        }
+        .down{
+            background: url("src/imgs/down.png") no-repeat;
+        }
+        .rank-item{
+            padding: 5px 9px;
+            border-bottom: 1px solid #3A3A3C;
+        }
+        .rank-item-last{
+            border-bottom: none;
+        }
+        .rank-item i{
+            font-size: 16px;
+            color: #F0F0EB;
+        }
+        .rank-item span i{
+            font-style: normal;
+            width: 21px;
+            display: inline-block;
+            text-align: center;
+            background: #006694;
+            border-radius: 11px;
+            ;
+            font-size: 14px;
+            color: #FFF;
+        }
+        .rank-item span span{
+            font-size: 15px;
+            color: #F0F0EB;
+            padding-left: 5px;
+        }
+    </style>
+</head>
+<body>
+<div class="m-rank">
+    <div class="m-container">
+        <div class="m-rank-hd">
+            <h4>西安各地区交易排行榜</h4>
+        </div>
+        <div class="m-rank-bd" id="m-rank">
+            <div class="rank-item">
+                <span>
+                    <i>1</i>
+                    <span></span>
+                </span>
+                <i class="upDown">&nbsp;</i>
+            </div>
+            <div class="rank-item">
+                <span>
+                    <i>2</i>
+                    <span></span>
+                </span>
+                <i class="upDown">&nbsp;</i>
+            </div>
+            <div class="rank-item">
+                <span>
+                    <i>3</i>
+                    <span></span>
+                </span>
+                <i class="upDown">&nbsp;</i>
+            </div>
+            <div class="rank-item">
+                <span>
+                    <i>4</i>
+                    <span></span>
+                </span>
+                <i class="upDown">&nbsp;</i>
+            </div>
+            <div class="rank-item rank-item-last">
+                <span>
+                    <i>5</i>
+                    <span></span>
+                </span>
+                <i class="upDown">&nbsp;</i>
+            </div>
+        </div>
+
+    </div>
+</div>
+</body>
+<script src="http://cdn.bootcss.com/jquery/1.8.2/jquery.js"></script>
+<script TYPE="TEXT/JAVASCRIPT" >$==undefined?(document.write("<script TYPE='TEXT/JAVASCRIPT' SRC='src/js/jquery.min.js'>")):"";
+</script>
+<script type="text/javascript" >
+    (function(){
+
+       /* $.ajax({
+            type:"get",
+            url:"",
+            dataType:"json",
+            success:function(data){
+
+            }
+        });*/
+
+        var count = 0;
+        var data1 = [{
+            rank:"0","name":"西安交通大学",flag:true
+        },{
+            rank:"1","name":"西安建筑科技大学",flag:true
+        },{
+            rank:"2","name":"陕西师范大学",flag:true
+        },{
+            rank:"3","name":"西安科技大学",flag:false
+        },{
+            rank:"4","name":"西安电子科技大学",flag:true
+        }];
+
+        var data2 = [{
+            rank:"5","name":"西安建筑科技大学",flag:true
+        },{
+            rank:"6","name":"西安交通大学",flag:false
+        },{
+            rank:"7","name":"西安电子科技大学",flag:true
+        },{
+            rank:"8","name":"西安科技大学",flag:false
+        },{
+            rank:"9","name":"西安师范大学",flag:true
+        }];
+
+        function rankHandler(){
+            var data = [];
+            count++;
+            if(count%2 === 1){
+                data = data1;
+            }else{
+                data = data2;
+            }
+
+            var items = $("#m-rank .rank-item");
+            for(var i = 0,len = data.length; i <  len;i++){
+
+                $(items.get(i)).find("span i").html(parseInt(data[i].rank)+1);
+                $(items.get(i)).find("span span").html(data[i].name);
+                if(data[i].flag){
+                    $(items.get(i)).find(".upDown").removeClass("down")
+                    $(items.get(i)).find(".upDown").addClass("up")
+                }else{
+                    $(items.get(i)).find(".upDown").removeClass("up")
+                    $(items.get(i)).find(".upDown").addClass("down")
+                }
+            }
+        }
+        rankHandler();
+        setInterval(function(){
+            rankHandler();
+        },5000);
+    })();
+</script>
+</html>

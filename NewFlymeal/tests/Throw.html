@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+       .m-ctner{
+           width: 1000px;
+           margin: 0 auto;
+       }
+        .main{
+            width: 737px;
+            border: 1px solid gray;
+            display: inline-block;
+        }
+        .side{
+            width: 250px;
+            border: 1px solid gray;
+            float: right;
+            height: 100%;;
+            display: inline-block;
+        }
+        .side input{
+            position: fixed;
+        }
+        .m-car{
+            position: fixed;
+            bottom: 0;
+            right: 1;
+            width: 100px;
+            border: 1px solid gray;
+            height: 55px;
+            vertical-align: middle;
+            display: inline-table;
+            background: #444;
+            color: #EEE;
+        }
+
+        .list-item{
+            padding-left: 347px;
+            padding-top: 17px;
+
+        }
+        .list-item span{
+            background: #e78f08;
+            border: 1px #e78f08 solid;
+            border-radius: 2px;
+            color: #d6d6d6;
+            padding: 5px;;
+            cursor: pointer;
+        }
+        #ball{
+            width: 50px;
+            height: 50px;
+            background: #e78f08;
+            border-radius: 25px;
+            position: fixed;
+            display: none;
+        }
+    </style>
+    <title>物品抛入购物车-</title>
+</head>
+<body>
+<div class="m-ctner">
+    <div class="main">主界面
+        <div class="m-list">
+            <div class="list-item">
+                <span>盖饭</span>
+            </div>
+            <div class="list-item">
+                <span>盖饭</span>
+            </div>
+            <div class="list-item">
+                <span>盖饭</span>
+            </div>
+            <div class="list-item">
+                <span>盖饭</span>
+            </div>
+            <div class="list-item">
+                <span>盖饭</span>
+            </div>
+            <div class="list-item">
+                <span>盖饭</span>
+            </div>
+            <div class="list-item">
+                <span>盖饭</span>
+            </div>
+            <div class="list-item">
+                <span>盖饭</span>
+            </div>
+            <div class="list-item">
+                <span>盖饭</span>
+            </div>
+            <div class="list-item">
+                <span>盖饭</span>
+            </div>
+            <div class="list-item">
+                <span>盖饭</span>
+            </div>
+            <div class="list-item">
+                <span>盖饭</span>
+            </div>
+            <div class="list-item">
+                <span>盖饭</span>
+            </div>
+            <div class="list-item">
+                <span>盖饭</span>
+            </div>
+            <div class="list-item">
+                <span>盖饭</span>
+            </div>
+            <div class="list-item">
+                <span>盖饭</span>
+            </div>
+            <div class="list-item">
+                <span>盖饭</span>
+            </div>
+            <div class="list-item">
+                <span>盖饭</span>
+            </div>
+            <div class="list-item">
+                <span>盖饭</span>
+            </div>
+            <div class="list-item">
+                <span>盖饭</span>
+            </div>
+            <div class="list-item">
+                <span>盖饭</span>
+            </div>
+            <div class="list-item">
+                <span>盖饭</span>
+            </div>
+            <div class="list-item">
+                <span>盖饭</span>
+            </div>
+            <div class="list-item">
+                <span>盖饭</span>
+            </div>
+            <div class="list-item">
+                <span>盖饭</span>
+            </div>
+            <div class="list-item">
+                <span>盖饭</span>
+            </div>
+            <div class="list-item">
+                <span>盖饭</span>
+            </div>
+            <div class="list-item">
+                <span>盖饭</span>
+            </div>
+            <div class="list-item">
+                <span>盖饭</span>
+            </div>
+            <div class="list-item">
+                <span>盖饭</span>
+            </div>
+            <div class="list-item">
+                <span>盖饭</span>
+            </div>
+            <div class="list-item">
+                <span>盖饭</span>
+            </div>
+            <div class="list-item">
+                <span>盖饭</span>
+            </div>
+            <div class="list-item">
+                <span>盖饭</span>
+            </div>
+            <div class="list-item">
+                <span>盖饭</span>
+            </div>
+            <div class="list-item">
+                <span>盖饭</span>
+            </div>
+            <div class="list-item">
+                <span>盖饭</span>
+            </div>
+            <div class="list-item">
+                <span>盖饭</span>
+            </div>
+            <div class="list-item">
+                <span>盖饭</span>
+            </div>
+            <div class="list-item">
+                <span>盖饭</span>
+            </div>
+            <div class="list-item">
+                <span>盖饭</span>
+            </div>
+            <div class="list-item">
+                <span>盖饭</span>
+            </div>
+
+
+
+        </div>
+    </div>
+    <div class="side">侧边栏
+    <div>
+        <input type="button" value="获取购物车坐标"/>
+    </div>
+    </div>
+    <div class="m-car" id="m-car">购物车</div>
+    <div id="ball"></div>
+</div>
+</body>
+<script src="src/js/jquery.min.js" type="text/javascript"></script>
+<script>
+    (function(){
+        $(".side input").click(function(){
+//            alert($(".m-car").offset().top)
+            var box = document.getElementById("m-car");
+            var pos = box.getBoundingClientRect();
+            /*alert( "top:"+pos.top +
+                    "left:"+pos.left +
+                    "bottom:"+pos.bottom +
+                    "right:"+pos.right +
+                    "width:"+pos.width +
+                    "height:"+pos.height);*/
+        })
+        $(".list-item span").each(function(){
+            $(this).click(function(){
+                var pos =  this.getBoundingClientRect();
+                /*alert( "top:"+pos.top +
+                        "left:"+pos.left +
+                        "bottom:"+pos.bottom +
+                        "right:"+pos.right +
+                        "width:"+pos.width +
+                        "height:"+pos.height);*/
+                var box = document.getElementById("m-car");
+                var posCar = box.getBoundingClientRect();
+//                alert(posCar.left-pos.left)
+
+                setInterval(function(){},1);
+                $("#ball").css({
+                    top:pos.top,
+                    left:pos.left,
+                    display:"block"
+                });/*.animate({
+                    left:200,
+                    top:90
+                },300,function(){
+                    $("#ball").animate({
+                        left:300,
+                        top:300
+                    },500,function(){
+                        $("#ball").css({
+                            "display":"none"
+                        });
+                    });
+                })*/;
+                var _ball = {
+                    _x:posCar.left - pos.left,
+                    _y:posCar.top - pos.top
+                };
+//                $("#ball").stop();
+                for( var i = 100, ball2Height = _ball._y/3; i > 0;i-=20){
+                    alert($("#ball").offset().top);
+                    $("#ball").css({
+                        top:$("#ball").offset().top-i,
+                        left:$("#ball").offset().left+50
+                    });
+                }
+              /*  $("#ball").animate({
+                    top:
+                },20,function(){
+                    $("#ball").animate({
+                        top:+(20+(posCar.top-pos.top))
+                    },600,function(){
+                        $("#ball").css({"display":"none"});
+                    });
+                });*/
+            });
+        });
+    })();
+</script>
+</html>

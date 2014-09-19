@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>jQuery UI Autocomplete - Multiple, remote</title>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.11.1/themes/smoothness/jquery-ui.css">
+    <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+    <script src="//code.jquery.com/ui/1.11.1/jquery-ui.js"></script>
+    <style>
+        .ui-autocomplete-loading {
+            background: white url("../src/imgs/custom-data/ui-anim_basic_16x16.gif") right center no-repeat;
+        }
+        body {
+            font-family: "Trebuchet MS", "Helvetica", "Arial",  "Verdana", "sans-serif";
+            font-size: 62.5%;
+        }
+        .u-img-restuarant{
+            padding-right: 15px;;
+        }
+        .u-star{
+            float: right;
+        }
+    </style>
+    <script>
+        $(function() {
+            function split( val ) {
+                return val.split( /,\s*/ );
+            }
+            function extractLast( term ) {
+                return split( term ).pop();
+            }
+
+            $( "#birds" )
+                // don't navigate away from the field on tab when selecting an item
+                    .bind( "keydown", function( event ) {
+                        if ( event.keyCode === $.ui.keyCode.TAB &&
+                                $( this ).autocomplete( "instance" ).menu.active ) {
+                            event.preventDefault();
+                        }
+                    })
+                    .autocomplete({
+                        source: function( request, response ) {
+                            $.getJSON( "search.html?term="+request.term, {
+                                term: extractLast( request.term )
+                            }, response );
+                        },
+                        search: function() {
+                            // custom minLength
+                            var term = extractLast( this.value );
+//                            if ( term.length < 2 ) {
+//                                return false;
+//                            }
+                        },
+                        focus: function() {
+                            // prevent value inserted on focus
+                            return false;
+                        },
+                        select: function( event, ui ) {
+                            var terms = split( this.value );
+                            // remove the current input
+                            terms.pop();
+                            // add the selected item
+                            terms.push( ui.item.label );
+                            // add placeholder to get the comma-and-space at the end
+//                            terms.push( "" );
+                            var _value = terms.pop();
+                            this.value = _value;
+                            $.ajax({
+                                type:"get",
+                                url:"#",//过滤餐厅的url,
+                                data:{term:_value},
+                                dataType:"json",
+                                complete:function(XHR, TS){
+
+                                }
+                            });
+                            return false;
+                        }
+                    })
+                    .autocomplete( "instance" )._renderItem = function( ul, item ) {
+                return $( "<li>" )
+                        .append( "<img class='u-img-restuarant' src="+item.img+" />" + item.label + "<img class='u-star' src="+ item.value +"/>"  )
+                        .appendTo( ul );
+            };;
+        });
+    </script>
+</head>
+<body>
+
+<div class="ui-widget">
+    <label for="birds">Birds: </label>
+    <input id="birds" size="50">
+</div>
+
+
+</body>
+</html>

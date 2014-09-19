@@ -1,0 +1,70 @@
+html,body,div,section{margin:0;padding:0;}
+body{
+    background: #f8f8f8;
+    font-family: "Helvetica Neue", Helvetica, STHeiTi, sans-serif;
+}
+/**
+ *优惠券列表项
+ */
+.discount-list-item{
+   padding: 24px 20px;
+   border-bottom: 1px #DDDDDD solid;
+   background: #ffffff;
+}
+.item-img-discount{
+    width: 43px;
+    height: 43px;
+    float: left;
+    padding-right: 10px;
+}
+.item-text{
+ 	text-align: left;
+ 	line-height: 32px;
+}
+.item-text > span:first-child{
+    font-size: 14px;
+    padding-right: 20px;
+    color: #696969;
+    padding-bottom: 5px;
+}
+.item-text > span:last-child{
+    font-size: 14px;
+    color: #A5A5A5;
+}
+.item-right-discount{
+    float: right;
+    position: relative;
+    top: -14px;
+}
+.discount-status{
+    color: #0bd318;
+}
+.discount-used{
+    color: #B3B3B3;
+}
+
+@media screen and (min-width:540px){
+	.discount-list-item{
+	   padding: 34px 20px;
+	}
+	.item-img-discount{
+	    width: 86px;
+	    height: 86px;
+	    padding-right: 20px;
+	    top: -13px;
+		position: relative;
+	}
+	.item-text > span:first-child{
+	    font-size: 24px;
+	    padding-right: 40px;
+	}
+	.item-text > span:last-child{
+	    font-size: 24px;
+	}
+	.item-right-discount{
+		top: -25px;
+		position: relative;
+		width: 24px;
+		height: 44px;
+	}
+}

@@ -1,0 +1,192 @@
+html,body,section,div{
+    padding: 0;
+    margin: 0;;
+}
+html{
+	width: 100%;
+}
+body{
+    background: #f2f2f2;
+    font-family: "Helvetica Neue", Helvetica, STHeiTi, sans-serif;
+}
+
+section.context > div:first-child{
+    height: 50px;
+    padding-top: 60px;
+    padding-bottom: 30px;
+}
+input.u-input-code{
+    width: 98%;
+    float: right;
+    height: 50px;
+    border:none;
+    font-size: 15px;
+    z-index: 20;
+    border:none;
+    border-top: 1px solid #d9d9d9;
+    border-bottom: 1px solid #d9d9d9;
+    padding-left: 2%;
+}
+
+section.context > div:last-child{
+    text-align: center;
+}
+section.context > div:last-child input,section > div:last-child input{
+    color:#FFFFFF;
+    -moz-box-shadow: 0px 0px 0px #ffffff;
+    -webkit-box-shadow: 0px 0px 0px #ffffff;
+    -o-box-shadow: 0px 0px 0px #ffffff;
+    box-shadow: 0px 0px 0px #ffffff;
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    border-radius: 3px;
+    border: 1px solid #00d2cb;
+    width: 70%;
+    height: 45px;
+    font-size: 18px;
+
+}
+section.context  > div:last-child input:first-child{
+    background:#45BBFF;
+}
+section.context  > div:last-child input:first-child:active{
+    background:#59c0fc;
+}
+/** 遮罩层*/
+.overlay{
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 23;
+    background: #B5B5B5;
+    display: none;
+    opacity: 1;
+}
+/* 弹窗*/
+section.modal{
+    width: 90%;
+    text-align: center;
+    background: #F5F5F5;
+    position: absolute;
+    top: 20%;
+    left: 5%;
+    /* Webkit (Safari/Chrome) */ -webkit-box-shadow: 0px 0px 10px 1px #000000;
+    /* Mozilla Firefox */ -moz-box-shadow: 0px 0px 10px 1px #000000;
+    /* Proposed W3C Markup */ box-shadow: 0px 0px 10px 1px #000000;
+}
+section.modal div{
+}
+section.modal  .modal-hd{
+    color: #33B5E5;
+    line-height: 50px;
+    text-align: left;
+    font-size: 22px;
+    padding-left: 15px;
+}
+section.modal  .modal-bd{
+    border-top:1px solid #D1D1D1;
+    padding: 0px 15px;
+    line-height: 28px;
+}
+.modal-bd{
+    text-align: left;
+}
+.modal-bd table{
+	border: 0;
+	margin: 0;
+	padding: 0;
+	
+}
+.modal-bd table  tbody,.modal-bd table  td{
+	vertical-align: top;
+}
+.modal-bd-name{
+    color:#707070;
+}
+.modal-bd-content{
+    color: #303030;
+}
+.discount-state{
+    color: #4cd964;
+}
+section.modal  .modal-ft{
+    color: #222222;
+    line-height: 50px;
+    border-top:1px solid #D1D1D1;
+}
+.modal-ft span{
+    font-size: 18px;
+    text-align: center;
+    height: 50px;
+    display: inline-table;
+}
+.modal-ft span:first-child{
+    border-right: 1px solid #d0d0d0;
+    width: 49%;
+}
+.modal-ft span:last-child{
+    width: 49%;
+}
+.alert-msg{
+    text-align: center;
+    bottom: 15%;
+    width: 100%;
+    position: fixed;
+    display: none;
+}
+.alert-msg > span{
+    border:solid 2px #282828;
+    -moz-border-radius: 5px 5px 5px 5px;
+    -webkit-border-radius:5px 5px 5px 5px;
+    border-radius:5px 5px 5px 5px;
+    background: #282828;
+    font-size: 16px;
+    color: #ffffff;
+    padding: 6px;
+    /* Webkit (Safari/Chrome) */ -webkit-box-shadow: 0px 0px 9px 0px #282828;
+    /* Mozilla Firefox */ -moz-box-shadow: 0px 0px 9px 0px #282828;
+    /* Proposed W3C Markup */ box-shadow: 0px 0px 9px 0px #282828;
+}
+@media screen and (min-width:540px){
+	section.context div:first-child{
+	    height: 100px;
+	    padding-top: 120px;
+	    padding-bottom: 60px;
+	}
+	section.modal{
+	    top: 14%;
+	}
+	section.context div:first-child input{
+	    height: 76px;
+	    font-size: 30px;
+	}
+	section.context div:last-child input,section div:last-child input{
+	    height: 75px;
+	    font-size: 30px;
+	
+	}
+	section.modal  .modal-hd{
+	    line-height: 85px;
+	    font-size: 36px;
+	    padding-left: 30px;
+	}
+	section.modal  .modal-bd{
+	    padding: 5px 30px;
+	    line-height: 48px;
+	    font-size: 24px;
+	}
+	section.modal  .modal-ft{
+	    line-height: 85px;
+	}
+	.modal-ft span{
+	    font-size: 30px;
+	    height: 90px;
+	}
+
+	.alert-msg > span{
+	    font-size: 24px;
+	    padding: 16px;
+	}
+}
