@@ -2,9 +2,85 @@
 <html>
 <head lang="en">
     <meta charset="UTF-8">
+    <link rel="stylesheet" href="src/lib/flexgrid/flexigrid.pack.css">
+    <link rel="stylesheet" href="src/lib/pikaday/css/pikaday.css">
+    <style>
+
+        .search-pannel{
+            margin-bottom: 25px;
+        }
+        .search-top-pannel{
+            margin-bottom: 10px;
+        }
+        .ipt-btn{
+            padding: 1px 6px;
+        }
+        .lb{
+            font-size: 13px;
+        }
+        .header-space{
+            margin-left: 26px;
+        }
+        .lb-three-word{
+            margin-right: 26px;
+        }
+        .lb-four-word{
+            margin-right: 20px;
+        }
+        .lb-two-word{
+            margin-right: 40px;
+        }
+        .tb-ctner table{
+            width: 100%;
+        }
+        a {
+            color: #F90;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        a.active {
+            background-color: #f90;
+            color: #fff;
+        }
+        .flexigrid div.nBtn {
+            height: 26px;
+        }
+        .flexigrid div.pDiv .pPageStat, .flexigrid div.pDiv .pcontrol {
+            top: 2px;
+        }
+        .s{
+            font-weight: bolder;
+            position: relative;
+            top: 7px;
+            margin-right: 3px;
+        }
+        .date{
+            width: 100px;;
+        }
+    </style>
     <title>财务管理-交易明细</title>
 </head>
 <body>
-
+<div>
+    <div class="search-pannel">
+        <div class="search-top-pannel">
+            <label class="lb" for="businessusername">商家用户名:</label><input type="text" id="businessusername"/>
+            <label class="lb lb-three-word header-space" for="username">用户名:</label><input type="text" id="username"/>
+            <label class="lb lb-four-word header-space" for="phone">顾客手机:</label><input type="text" id="phone"/>
+            <label class="lb lb-four-word header-space" for="businessTele">商家电话:</label><input type="text" id="businessTele"/>
+        </div>
+        <label class="lb lb-three-word" for="order ">订单号:</label><input type="text" id="order "/>
+        <label class="lb header-space lb-two-word" >日期:</label><input type="text" id="datestart" class="date"/><span class="s">~</span><input type="text" id="dateend" class="date"/>
+        <input type="button" value="查询"  class="ipt-btn"/><input type="button" value="导出交易明细" class="ipt-btn"/>
+    </div>
+    <div class="tb-ctner">
+        <table class="tb-data" id="tb-data" style="display: none;"></table>
+    </div>
+</div>
 </body>
+<script type="text/javascript" src="src/js/jquery.min.js"></script>
+<script type="text/javascript" src="src/js/flexigrid.pack.js"></script>
+<script type="text/javascript" src="src/lib/pikaday/pikaday.min.js"></script>
+<script type="text/javascript"  src="src/js/transactionDetail.js"></script>
 </html>

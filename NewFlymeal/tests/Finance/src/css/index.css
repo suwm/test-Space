@@ -1,0 +1,70 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+#header{
+    height: 60px;
+    color: #FFF;
+    background-color: #F90;
+}
+
+#header .logo {
+    float: left;
+    padding: 0 30px;
+    line-height: 60px;
+    font-size: 30px;
+    font-weight: bold;
+    font-family: "Comic Sans MS", cursive;
+}
+#header .info {
+    float: left;
+    padding: 10px 0;
+    line-height: 20px;
+}
+#header .info a {
+    color: #FFF!important;
+    font-size: 12px;
+}
+a, a:link, a:visited, a:active {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+.nav{
+    width: 205px;
+    bottom: 0;
+    padding: 10px 0px 10px 0;
+    font-size: 14px;
+    background-color: #FEA;
+}
+table td{
+    vertical-align: top;
+}
+table.tb-layout{
+    border-spacing: 0px;
+    width: 100%;
+    position: relative;
+    top: -4px;
+}
+table.tb-layout td:first-child{
+    vertical-align: top;
+    background-color: #FEA;
+}
+.nav ul{
+    list-style-type: none;
+    background: #FFF;
+    padding-bottom: 15px;
+}
+.c-title{
+    background: #f90;
+    color: white;
+    height: 32px;
+    line-height: 32px;
+    padding-left: 18px;
+}
+.c-option{
+    padding-left: 25px;
+    height: 32px;
+    line-height: 32px;
+    font-family: "宋体";
+}

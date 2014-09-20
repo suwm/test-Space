@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="src/css/index.css">
+    <title>财务管理</title>
+</head>
+<body>
+<div id="header">
+    <div class="logo">FLYMEAL</div>
+    <div class="info">
+        欢迎您，管理员 |
+        <a href="#">退出</a><br>
+        <a href="#">飞饭首页</a> |
+        <a href="#">管理端首页</a>
+    </div>
+</div>
+<div class="content">
+    <table width="100%" style=""  class="tb-layout">
+        <tr>
+            <td width="205px">
+                <div class="nav">
+                    <ul>
+                        <li class="c-title">
+                            <h3>财务管理</h3>
+                        </li>
+                        <li class="c-option">
+                            <A href="transactionDetail.html" target="mainiframe">交易明细</A>
+                        </li>
+                        <li class="c-option">
+                            <A href="refund.html" target="mainiframe">退款</A>
+                        </li>
+                        <li class="c-option" style="background: #F90; ">
+                            <A href="checkDetail.html" target="mainiframe" style="color: #FFF;">财务对账</A>
+                        </li>
+                    </ul>
+                </div>
+            </td>
+            <td height="100%">
+                <div class="main" >
+                    <iframe src="transactionDetail.html" frameborder="0" width="100%" height="700px" name="mainiframe"></iframe>
+                </div>
+            </td>
+        </tr>
+    </table>
+</div>
+</body>
+<script type="text/javascript" src="src/js/jquery.min.js"></script>
+<script type="text/javascript" src="src/js/index.js"></script>
+</html>

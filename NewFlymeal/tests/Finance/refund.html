@@ -2,9 +2,139 @@
 <html>
 <head lang="en">
     <meta charset="UTF-8">
+    <link rel="stylesheet" href="src/lib/flexgrid/flexigrid.pack.css">
+    <style>
+        .search-pannel{
+            margin-bottom: 16px;
+        }
+        .ipt-btn{
+            padding: 1px 6px;
+        }
+        .lb{
+            font-size: 13px;
+        }
+        .header-space{
+            margin-left: 26px;
+        }
+        .lb-three-word{
+            margin-right: 26px;
+        }
+        .lb-four-word{
+            margin-right: 20px;
+        }
+        .lb-two-word{
+            margin-right: 40px;
+        }
+        .tb-res{
+            width: 100%;
+            border-top: 1px solid gainsboro;
+            border-left: 1px solid gainsboro;
+            border-right: 1px solid gainsboro;
+        }
+        .tb-res th{
+            background: #f90;
+            color: #FFF;
+            height: 30px;
+            border-spacing: 0px;
+            font-weight: bold;
+            border: none;
+        }
+        .tb-res td{
+            border-bottom: 1px solid gainsboro;
+            text-align: center;
+        }
+        .tb-detail{
+            width: 100%;;
+        }
+        .hr{
+            border-top: 1px #000 dashed;
+            margin-top: 26px;
+        }
+    </style>
     <title>财务管理-退款</title>
 </head>
 <body>
+<div class="search-pannel">
+    <label class="lb lb-three-word" for="username">用户名:</label><input type="text" id="username"/>
+    <label class="lb lb-four-word header-space" for="phone">顾客手机:</label><input type="text" id="phone"/>
+    <input type="button" value="查询"  class="ipt-btn"/>
+</div>
+<div >
+    <table class="tb-res" cellpadding="0"  cellspacing="0" >
+        <tr>
+            <th>用户名称</th>
+            <th>手机号</th>
+            <th>账户余额</th>
+            <th>操作</th>
+        </tr>
+        <tr>
+            <td>测试用户</td>
+            <td>15029351331</td>
+            <td>156.00</td>
+            <td>
+                <input type="button" value="选中用户"  class="ipt-btn">
+                <input type="button" value="退款" class="ipt-btn">
+            </td>
+        </tr>
+        <tr>
+            <td>测试用户</td>
+            <td>15029351331</td>
+            <td>156.00</td>
+            <td>
+                <input type="button" value="选中用户"  class="ipt-btn">
+                <input type="button" value="退款" class="ipt-btn">
+            </td>
+        </tr>
+        <tr>
+            <td>测试用户</td>
+            <td>15029351331</td>
+            <td>156.00</td>
+            <td>
+                <input type="button" value="选中用户"  class="ipt-btn">
+                <input type="button" value="退款" class="ipt-btn">
+            </td>
+        </tr>
+        <tr>
+            <td>测试用户</td>
+            <td>15029351331</td>
+            <td>156.00</td>
+            <td>
+                <input type="button" value="选中用户"  class="ipt-btn">
+                <input type="button" value="退款" class="ipt-btn">
+            </td>
+        </tr>
+    </table>
+    <div class="hr">
 
+    </div>
+<h2>查看用户交易明细</h2>
+   <table id="tb-detail" style="display: none;">
+
+   </table>
+</div>
 </body>
+<script type="text/javascript" src="src/js/jquery.min.js"></script>
+<script type="text/javascript" src="src/js/flexigrid.pack.js"></script>
+<script type="text/javascript">
+    $(function(){
+        $("#tb-detail").flexigrid({
+            url: '#',
+            dataType: 'json',
+            colModel : [
+                {display: '创建时间', name : 'iso',  sortable : true, align: 'center',width : '20%'},
+                {display: '交易类型', name : 'name', sortable : true, align: 'center',width : '15%'},
+                {display: '详情', name : 'printable_name', sortable : true, align: 'center',width : '25%'},
+                {display: '金额', name : 'numcode',  sortable : true, align: 'center',width : '20%'},
+                {display: '交易状态', name : 'iso30',  sortable : true, align: 'center',width : '20%'}
+            ],
+            singleSelect : true,
+            resizable : false,
+            usepager : true,
+            useRp : true,
+            rp : 10,
+            height : 400
+        });
+
+    });
+</script>
 </html>
