@@ -1,14 +1,15 @@
 $(function(){
+
     $("#tb-data").flexigrid({
-        url: '#',
+        url: 'src/data/transactionDetail.txt',
         dataType: 'json',
         colModel : [
-            {display: '交易号', name : 'iso',  sortable : true, align: 'center',width : '20%'},
-            {display: '订单号', name : 'name', sortable : true, align: 'center',width : '15%'},
-            {display: '用户名', name : 'printable_name', sortable : true, align: 'center',width : '15%'},
-            {display: '商家用户名', name : 'iso3',  sortable : true, align: 'center',width : '20%'},
-            {display: '金额', name : 'numcode',  sortable : true, align: 'center',width : '15%'},
-            {display: '类型', name : 'iso30',  sortable : true, align: 'center',width : '15%'}
+            {display: '交易号', name : 'transactionNum',  sortable : true, align: 'center',width : '20%'},
+            {display: '订单号', name : 'orderNum', sortable : true, align: 'center',width : '15%'},
+            {display: '用户名', name : 'username', sortable : true, align: 'center',width : '15%'},
+            {display: '商家用户名', name : 'businessusername',  sortable : true, align: 'center',width : '20%'},
+            {display: '金额', name : 'money',  sortable : true, align: 'center',width : '15%'},
+            {display: '类型', name : 'type',  sortable : true, align: 'center',width : '15%'}
         ],
         singleSelect : true,
         resizable : false,
