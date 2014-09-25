@@ -2,9 +2,212 @@
 <html>
 <head lang="en">
     <meta charset="UTF-8">
+    <style>
+        body{
+            font-family: "Helvetica", "Arial",  "Verdana", "sans-serif";
+        }
+        .btn-ctn{
+            margin-bottom: 15px;
+            margin-top: 16px;
+        }
+        .ipt-btn{
+            padding: 1px 6px;
+        }
+        .flexigrid div.nBtn {
+            height: 26px;
+        }
+        .flexigrid div.pDiv .pPageStat, .flexigrid div.pDiv .pcontrol {
+            top: 2px;
+        }
+        .flexigrid div.bDiv {
+            overflow-x: hidden;
+        }
+        .tb-res{
+            width: 100%;
+            border-top: 1px solid gainsboro;
+            border-left: 1px solid gainsboro;
+            border-right: 1px solid gainsboro;
+        }
+        .tb-res th{
+            background: #f90;
+            color: #FFF;
+            height: 30px;
+            border-spacing: 0px;
+            font-weight: bold;
+            border: none;
+        }
+        .tb-res td{
+            border-bottom: 1px solid gainsboro;
+            text-align: center;
+            padding: 7px 2px;
+        }
+
+        .num{
+            color: #009933;
+            font-weight: bold;
+        }
+        .lb-0{
+            font-size: 13px;
+            color: #999;
+        }
+        .td-left{
+            text-align: left;
+        }
+    </style>
     <title>财务管理-财务对账</title>
 </head>
 <body>
+<div class="btn-ctn">
+    <label for="lb-year">年份：</label>
+    <input type="hidden" value="" id="click-item-index"/>
+    <select name="" id="lb-year">
+        <option value="2014">2014</option>
+        <option value="2015">2015</option>
+        <option value="2016">2016</option>
+        <option value="2017">2017</option>
+        <option value="2018">2018</option>
+    </select>
+    <input type="button" value="查询" class="ipt-btn"/>
+</div>
+<div>
+    <table id="tb-checkDetail" class="tb-res" cellpadding="0"  cellspacing="0">
+          <tr>
+              <th>月份</th>
+              <th>收入</th>
+              <th>支出</th>
+              <th>用户消费</th>
+              <th>调整项</th>
+              <th>余额</th>
+              <th>操作</th>
+          </tr>
+         <tr>
+              <td>08</td>
+              <td>
+                  <span class="num">+6500.00</span><br>
+                  <label class="lb-0">120笔</label>
+              </td>
+              <td>
+                  <span class="num">+6500.00</span><br>
+                  <label class="lb-0">120笔</label>
+              </td>
+              <td>
+                  <span class="num">+6500.00</span><br>
+                  <label class="lb-0">120笔</label>
+              </td>
+              <td>
+                  -100
+              </td>
+              <td STYLE="text-align: left;">
+                  <label class="lb-0">期初</label> 14<br>
+                  <label class="lb-0">期末</label> 5100.00
+              </td>
+              <td>
+                  <input type="button" value="导出月账单"/>
+                  <input type="button" value="设置调整项" class="td-adjust-btn"/>
+              </td>
 
+         </tr>
+        <tr>
+            <td>07</td>
+            <td>
+                <span class="num">+6500.00</span><br>
+                <label class="lb-0">120笔</label>
+            </td>
+            <td>
+                <span class="num">+6500.00</span><br>
+                <label class="lb-0">120笔</label>
+            </td>
+            <td>
+                <span class="num">+6500.00</span><br>
+                <label class="lb-0">120笔</label>
+            </td>
+            <td>
+                -100
+            </td>
+            <td STYLE="text-align: left;">
+                <label class="lb-0">期初</label> 14<br>
+                <label class="lb-0">期末</label> 5100.00
+            </td>
+            <td>
+                <input type="button" value="导出月账单"/>
+                <input type="button" value="设置调整项" class="td-adjust-btn"/>
+            </td>
+
+        </tr>
+        <tr>
+            <td>06</td>
+            <td>
+                <span class="num">+6500.00</span><br>
+                <label class="lb-0">120笔</label>
+            </td>
+            <td>
+                <span class="num">+6500.00</span><br>
+                <label class="lb-0">120笔</label>
+            </td>
+            <td>
+                <span class="num">+6500.00</span><br>
+                <label class="lb-0">120笔</label>
+            </td>
+            <td>
+                -100
+            </td>
+            <td STYLE="text-align: left;">
+                <label class="lb-0">期初</label> 14<br>
+                <label class="lb-0">期末</label> 5100.00
+            </td>
+            <td>
+                <input type="button" value="导出月账单"/>
+                <input type="button" value="设置调整项" class="td-adjust-btn"/>
+            </td>
+
+        </tr>
+        <tr>
+            <td>05</td>
+            <td>
+                <span class="num">+6500.00</span><br>
+                <label class="lb-0">120笔</label>
+            </td>
+            <td>
+                <span class="num">+6500.00</span><br>
+                <label class="lb-0">120笔</label>
+            </td>
+            <td>
+                <span class="num">+6500.00</span><br>
+                <label class="lb-0">120笔</label>
+            </td>
+            <td>
+                -100
+            </td>
+            <td STYLE="text-align: left;">
+                <label class="lb-0">期初</label> 14<br>
+                <label class="lb-0">期末</label> 5100.00
+            </td>
+            <td>
+                <input type="button" value="导出月账单"/>
+                <input type="button" value="设置调整项" class="td-adjust-btn"/>
+            </td>
+
+        </tr>
+    </table>
+</div>
 </body>
+<script type="text/javascript" src="src/js/jquery.min.js"></script>
+<script type="text/javascript">
+$(function(){
+
+
+    $(".td-adjust-btn").each(function(index,item){
+        $(this).click(function(){
+            $("#click-item-index").val(index);
+            window.top.parent.dialogFadeIn();
+        });
+    })
+    ;
+
+});
+function resetValue(param){
+    var index = $("#click-item-index").val();
+    $(".td-adjust-btn:eq("+index+")").parents("tr").find("td:eq(4)").html(param);
+}
+</script>
 </html>

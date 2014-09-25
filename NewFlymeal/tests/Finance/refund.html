@@ -2,28 +2,17 @@
 <html>
 <head lang="en">
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="src/lib/flexgrid/flexigrid.pack.css">
+    <link rel="stylesheet" href="src/lib/pikaday/css/pikaday.css">
     <style>
+        body{
+            font-family: "Helvetica", "Arial",  "Verdana", "sans-serif";
+        }
         .search-pannel{
-            margin-bottom: 16px;
+            margin-bottom: 5px;
+            margin-top: 25px;
         }
         .ipt-btn{
             padding: 1px 6px;
-        }
-        .lb{
-            font-size: 13px;
-        }
-        .header-space{
-            margin-left: 26px;
-        }
-        .lb-three-word{
-            margin-right: 26px;
-        }
-        .lb-four-word{
-            margin-right: 20px;
-        }
-        .lb-two-word{
-            margin-right: 40px;
         }
         .tb-res{
             width: 100%;
@@ -42,99 +31,115 @@
         .tb-res td{
             border-bottom: 1px solid gainsboro;
             text-align: center;
+            padding: 2px;
+            font-size: 13px;
         }
-        .tb-detail{
-            width: 100%;;
+
+        .s{
+            font-weight: bolder;
+            position: relative;
+            top: 2px;
+            margin-right: 3px;
         }
-        .hr{
-            border-top: 1px #000 dashed;
-            margin-top: 26px;
+        .date{
+            width: 100px;;
         }
     </style>
     <title>财务管理-退款</title>
 </head>
 <body>
 <div class="search-pannel">
-    <label class="lb lb-three-word" for="username">用户名:</label><input type="text" id="username"/>
-    <label class="lb lb-four-word header-space" for="phone">顾客手机:</label><input type="text" id="phone"/>
+    日期:</label><input type="text" id="datestart" class="date"/><span class="s">~</span><input type="text" id="dateend" class="date"/>
     <input type="button" value="查询"  class="ipt-btn"/>
 </div>
 <div >
     <table class="tb-res" cellpadding="0"  cellspacing="0" >
         <tr>
-            <th>用户名称</th>
-            <th>手机号</th>
-            <th>账户余额</th>
-            <th>操作</th>
+            <th>对账时间</th>
+            <th>进账</th>
+            <th>出账</th>
+            <th>上次余额</th>
+            <th>本次余额</th>
+            <th>对账周期</th>
+            <th>结果</th>
         </tr>
         <tr>
-            <td>测试用户</td>
-            <td>15029351331</td>
+            <td>2015-05-09 09:06:23</td>
+            <td>150</td>
             <td>156.00</td>
+            <td>15600.00</td>
+            <td>156000.00</td>
+            <td>2015-02-16 ~ 2015-09-16</td>
             <td>
-                <input type="button" value="选中用户"  class="ipt-btn">
-                <input type="button" value="退款" class="ipt-btn">
+                正常
             </td>
         </tr>
         <tr>
-            <td>测试用户</td>
-            <td>15029351331</td>
+            <td>2015-05-09 09:06:23</td>
+            <td>150</td>
             <td>156.00</td>
+            <td>15600.00</td>
+            <td>156000.00</td>
+            <td>2015-02-16 ~ 2015-09-16</td>
             <td>
-                <input type="button" value="选中用户"  class="ipt-btn">
-                <input type="button" value="退款" class="ipt-btn">
+                正常
             </td>
         </tr>
         <tr>
-            <td>测试用户</td>
-            <td>15029351331</td>
+            <td>2015-05-09 09:06:23</td>
+            <td>150</td>
             <td>156.00</td>
+            <td>15600.00</td>
+            <td>156000.00</td>
+            <td>2015-02-16 ~ 2015-09-16</td>
             <td>
-                <input type="button" value="选中用户"  class="ipt-btn">
-                <input type="button" value="退款" class="ipt-btn">
+                正常
             </td>
         </tr>
         <tr>
-            <td>测试用户</td>
-            <td>15029351331</td>
+            <td>2015-05-09 09:06:23</td>
+            <td>150</td>
             <td>156.00</td>
+            <td>15600.00</td>
+            <td>156000.00</td>
+            <td>2015-02-16 ~ 2015-09-16</td>
             <td>
-                <input type="button" value="选中用户"  class="ipt-btn">
-                <input type="button" value="退款" class="ipt-btn">
+                正常
             </td>
         </tr>
+
     </table>
-    <div class="hr">
+  <!--  <div class="hr">-->
 
     </div>
-<h2>查看用户交易明细</h2>
+<!--<h2>查看用户交易明细</h2>
    <table id="tb-detail" style="display: none;">
 
-   </table>
+   </table>-->
 </div>
 </body>
 <script type="text/javascript" src="src/js/jquery.min.js"></script>
-<script type="text/javascript" src="src/js/flexigrid.pack.js"></script>
+<script type="text/javascript" src="src/lib/pikaday/pikaday.min.js"></script>
 <script type="text/javascript">
     $(function(){
-        $("#tb-detail").flexigrid({
-            url: '#',
-            dataType: 'json',
-            colModel : [
-                {display: '创建时间', name : 'iso',  sortable : true, align: 'center',width : '20%'},
-                {display: '交易类型', name : 'name', sortable : true, align: 'center',width : '15%'},
-                {display: '详情', name : 'printable_name', sortable : true, align: 'center',width : '25%'},
-                {display: '金额', name : 'numcode',  sortable : true, align: 'center',width : '20%'},
-                {display: '交易状态', name : 'iso30',  sortable : true, align: 'center',width : '20%'}
-            ],
-            singleSelect : true,
-            resizable : false,
-            usepager : true,
-            useRp : true,
-            rp : 10,
-            height : 400
-        });
+    /* 日期类初始化*/
+   var picker = new Pikaday(
+           {
 
+               field: document.getElementById('datestart'),
+               firstDay: 1,
+               minDate: new Date('2000-01-01'),
+               maxDate: new Date('2030-12-31'),
+               yearRange: [2000,2030]
+           });
+   var picker = new Pikaday(
+           {
+               field: document.getElementById('dateend'),
+               firstDay: 1,
+               minDate: new Date('2000-01-01'),
+               maxDate: new Date('2030-12-31'),
+               yearRange: [2000,2030]
+           });
     });
 </script>
 </html>

@@ -1,0 +1,83 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <script type="text/javascript" src="jquery.min.js"></script>
+
+    <script type="text/javascript" src="members.js"></script>
+
+    <script type="text/javascript">
+
+
+        /**
+         * 分页回调函数
+         * @param page_index 用户点击的当前页从0开始
+         * @param jq
+         * @returns {boolean}
+         */
+        function pageselectCallback(page_index, jq){
+            //在此写获取后台数据的请求事件
+            return false;
+        }
+
+
+        $(document).ready(function(){
+            var opt = {
+                callback: pageselectCallback,//点击事件回调
+                items_per_page:1,//每页显示的数据数量
+                num_display_entries:5,//省略号前最少显示几项
+                num_edge_entries:3,//省略号后显示几项
+                next_text:">",
+                prev_text:"&lt;"
+            };
+            $("#Pagination").pagination(30, opt);//30为记录总数
+        });
+
+
+    </script>
+    <style type="text/css">
+
+        .pagination {
+            font-size: 80%;
+        }
+
+        .pagination a {
+            text-decoration: none;
+            border: solid 1px #E5E5E5;
+            color: #ADADAD;
+            border-radius: 2px;
+            font-family: "微软雅黑";
+        }
+
+        .pagination a, .pagination span {
+            display: block;
+            float: left;
+            padding: 0.3em 0.5em;
+            margin-right: 5px;
+            margin-bottom: 5px;
+        }
+
+        .pagination .current {
+            background: #ff7744;
+            color: #fff;
+            border: solid 1px #ff7744;
+            border-radius: 2px;
+            font-family: "微软雅黑";
+        }
+
+        .pagination .current.prev, .pagination .current.next{
+            color:#999;
+            border-color:#EDEDED;
+            background:#fff;
+        }
+
+    </style>
+
+    <title>Pagination</title>
+</head>
+<body>
+    <div id="Pagination" class="pagination">
+    </div>
+</body>
+</html>
